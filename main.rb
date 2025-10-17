@@ -13,13 +13,11 @@ def is_alpha?(character)
 end
 
 def encrypt_alpha(character,shift)
-    p "character " + character
     ascii_num = character.ord - shift
     if ascii_num < 65 || ascii_num <97 
         #loop it back to a or A if overflow
         ascii_num +=26
     end
-    p "after:" + ascii_num.chr
     ascii_num.chr
 end
 
