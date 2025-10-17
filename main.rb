@@ -21,11 +21,23 @@ def encrypt_alpha(character,shift)
     ascii_num.chr
 end
 
+def encrypt_num(character,shift)
+    if character.ord == 32
+        # if the character is a "space", then keep it as such
+        return character
+    end
+    ascii_num = character.ord - shift
+    if ascii_num <48
+        ascii_num +=10
+    end
+    ascii_num.chr
+end
+
 def caesar_shift(input,shift)
     split_input = input.split("")
     split_input.map do |character|
         alpha = is_alpha?(character)
-        character = alpha ? encrypt_alpha(character,shift) : character
+        character = alpha ? encrypt_alpha(character,shift) : encrypt_num(character,shift)
         character
     end.join
 end
